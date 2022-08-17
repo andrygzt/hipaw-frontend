@@ -8,6 +8,7 @@ import { UserAuth } from "../context/AuthContext";
 import { Google as GoogleIcon } from "../icons/google";
 import axios from "axios";
 import { useEffect } from "react";
+import { backend_url } from "src/env";
 
 const Login = () => {
   const router = useRouter();
@@ -29,7 +30,7 @@ const Login = () => {
     if (user?.email) {
       console.log("loged in", user);
       axios
-        .get(`http://127.0.0.1:5000/humans/email/${user.email}`)
+        .get(`${backend_url}/humans/email/${user.email}`)
         .then((response) => {
           console.log(response);
           if (response.data?.id) {

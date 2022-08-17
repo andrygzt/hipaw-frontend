@@ -20,6 +20,8 @@ import {
 import { posts } from "../__mocks__/posts";
 import { PostCard } from "../components/product/one-post";
 import { DashboardLayout } from "../components/dashboard-layout";
+import { backend_url } from "src/env";
+
 const post = posts[0];
 // Somehow this must call API of one post
 
@@ -49,7 +51,7 @@ const PostClaim = () => {
     onSubmit: () => {
       console.log("formik.values", formik.values);
       axios
-        .post(`http://127.0.0.1:5000/humans/${user.human_id}/post`, formik.values)
+        .post(`${backend_url}/${user.human_id}/post`, formik.values)
         .then((response) => {
           console.log("response", response);
         })
@@ -67,7 +69,7 @@ const PostClaim = () => {
   const getPetsFromHuman = () => {
     console.log("user", human.id);
     axios
-      .get(`http://127.0.0.1:5000/humans/${human.id}/pets`)
+      .get(`${backend_url}/humans/${human.id}/pets`)
       .then((response) => {
         setHumanData(response.data);
       })

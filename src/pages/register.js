@@ -7,6 +7,7 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import axios from "axios";
 import { UserAuth } from "../context/AuthContext";
+import { backend_url } from "src/env";
 
 const Register = () => {
   const { user } = UserAuth();
@@ -24,7 +25,7 @@ const Register = () => {
     onSubmit: () => {
       console.log("formik.values", formik.values);
       axios
-        .post(`http://127.0.0.1:5000/humans`, formik.values)
+        .post(`${backend_url}/humans`, formik.values)
         .then((response) => {
           console.log("response", response);
           router.push("/");

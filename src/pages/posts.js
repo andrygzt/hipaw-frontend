@@ -1,10 +1,11 @@
 import Head from "next/head";
 import React, { useState, useEffect } from "react";
 import { Box, Container, Grid, Pagination } from "@mui/material";
-import { PostListToolbar } from "../components/product/post-list-toolbar";
-import { PostCard } from "../components/product/post-card";
+import { PostListToolbar } from "../components/post/post-list-toolbar";
+import { PostCard } from "../components/post/post-card";
 import { DashboardLayout } from "../components/dashboard-layout";
 import axios from "axios";
+import { backend_url } from "src/env";
 
 const Products = () => {
   const [posts, setPosts] = useState([]);
@@ -15,7 +16,7 @@ const Products = () => {
 
   const getPostsFromAPI = () => {
     axios
-      .get(`http://127.0.0.1:5000/posts`)
+      .get(`${backend_url}/posts`)
       .then((response) => {
         setPosts(response.data);
       })

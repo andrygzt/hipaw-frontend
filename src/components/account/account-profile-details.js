@@ -9,6 +9,10 @@ import {
   Grid,
   TextField,
 } from "@mui/material";
+import axios from "axios";
+import { UserAuth } from "../context/AuthContext";
+import { backend_url } from "src/env";
+
 
 const petType = [
   {
@@ -42,13 +46,20 @@ const petType = [
 ];
 
 export const AccountPetProfileDetails = (props) => {
-  const [values, setValues] = useState({
-    name: "Lobo",
-    age: "7 years",
-    size: "70 lb",
-    type: "Dog",
-    detail: "low energy",
-  });
+  const { human } = UserAuth();
+  const [values, setValues] = useState({});
+  const human = { id: 1 };
+  const submitNewPet = () => {
+    console.log("pet values", values);
+    axios
+      .post(`${backend_url}/humans/${human.id}/pet`, values)
+      .then((response) => {
+        console.log("response", response);
+      })
+      .catch((error) => {
+        console.log("ERROR", error);
+      });
+  };
 
   const handleChange = (event) => {
     setValues({
@@ -141,7 +152,7 @@ export const AccountPetProfileDetails = (props) => {
             p: 2,
           }}
         >
-          <Button color="primary" variant="contained">
+          <Button color="primary" variant="contained" onClick={submitNewPet}>
             Save details
           </Button>
         </Box>

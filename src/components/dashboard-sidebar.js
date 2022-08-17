@@ -16,7 +16,7 @@ const items = [
     title: "Posts",
   },
   {
-    href: "/account",
+    href: "/pet",
     title: "Register a Pet",
   },
   {
