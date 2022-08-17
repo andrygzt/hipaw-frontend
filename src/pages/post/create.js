@@ -3,20 +3,7 @@ import { useState, useEffect } from "react";
 import { UserAuth } from "../../context/AuthContext";
 import axios from "axios";
 
-import {
-  Box,
-  Container,
-  Button,
-  Grid,
-  Card,
-  CardContent,
-  CardHeader,
-  TextField,
-  Divider,
-  Avatar,
-} from "@mui/material";
-import { posts } from "../../__mocks__/posts";
-import { PostCard } from "../../components/post/one-post";
+import { Box } from "@mui/material";
 import { DashboardLayout } from "../../components/dashboard-layout";
 import { PostEdit } from "src/components/post/edit-post";
 import { backend_url } from "src/env";

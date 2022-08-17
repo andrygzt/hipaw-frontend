@@ -17,7 +17,6 @@ import {
   TextField,
   Divider,
 } from "@mui/material";
-import { posts } from "../__mocks__/posts";
 import { PostCard } from "../components/product/one-post";
 import { DashboardLayout } from "../components/dashboard-layout";
 import { backend_url } from "src/env";
