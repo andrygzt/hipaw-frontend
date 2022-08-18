@@ -8,7 +8,6 @@ import {
   Divider,
   Grid,
   TextField,
-  Typography,
 } from "@mui/material";
 import { useRouter } from "next/router";
 import { useFormik } from "formik";
@@ -29,7 +28,7 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
     status: "Open",
     pet_id: "",
     is_claim: false,
-    human_id: humanData.human_id
+    human_id: humanData.human_id,
   };
   let postTypeName = isClaim ? "Claim" : "Post";
   let title = `Create a ${postTypeName}`;
@@ -43,13 +42,12 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
       status: post.status,
       pet_id: post.pet?.id,
       is_claim: post.is_claim,
-      human_id: humanData.human_id
+      human_id: humanData.human_id,
     };
     title = `Edit a ${postTypeName}`;
     submitContent = "Save Post";
     avatarSrc = imageInfo.base64 || `${backend_url}/posts/images/${post.id}.jpg`;
-  }
-  else if (isClaim) {
+  } else if (isClaim) {
     initialFormikData = {
       title: "",
       description: "",
@@ -58,7 +56,7 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
       pet_id: "",
       is_claim: true,
       reference_post_id: post.id,
-      human_id: humanData.human_id
+      human_id: humanData.human_id,
     };
     submitContent = "Create Claim";
   }
@@ -76,8 +74,8 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
   });
 
   const createOrSave = () => {
-    console.log('formik.values', formik.values);
-    if (hasPost && !isClaim){
+    console.log("formik.values", formik.values);
+    if (hasPost && !isClaim) {
       axios
         .patch(`${backend_url}/posts/${post.id}`, formik.values)
         .then((response) => {
@@ -87,8 +85,7 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
         .catch((error) => {
           console.log("ERROR", error);
         });
-    }
-    else {
+    } else {
       axios
         .post(`${backend_url}/humans/${humanData.human_id}/post`, formik.values)
         .then((response) => {
@@ -102,8 +99,8 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
   };
 
   const uploadImage = async (post_id) => {
-    console.log('imageInfo.bytes', imageInfo.bytes)
-    if (imageInfo.bytes){
+    console.log("imageInfo.bytes", imageInfo.bytes);
+    if (imageInfo.bytes) {
       const formData = new FormData();
       formData.append("image", imageInfo.bytes);
       try {
@@ -113,31 +110,23 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
           data: formData,
           headers: { "Content-Type": "multipart/form-data" },
         });
-        router.push(`/post/${post_id}`)
+        router.push(`/post/${post_id}`);
       } catch (error) {
         console.log(error);
       }
-    }
-    else {
-      router.push(`/post/${post_id}`)
+    } else {
+      router.push(`/post/${post_id}`);
     }
   };
-
-  
 
   return (
     <form onSubmit={formik.handleSubmit}>
       <Card>
-        {/* Try to tenary this subheader and header to do not create same from twice title="Edit a Post"*/}
-        <CardHeader subheader="Tell me more about what you want to share"
-          title={title} />
+        <CardHeader subheader="Tell me more about what you want to share" title={title} />
         <Divider />
         <CardContent>
-          <Grid container
-            spacing={2}>
-            <Grid item
-              xs={12}
-              xl={12}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} xl={12}>
               <TextField
                 error={Boolean(formik.touched.title && formik.errors.title)}
                 fullWidth
@@ -177,8 +166,7 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
                 sx={{ py: 2 }}
               >
                 {postStatus.map((option) => (
-                  <option key={option.value}
-                    value={option.value}>
+                  <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
                 ))}
@@ -199,8 +187,7 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
               >
                 <option value="">Select a pet</option>
                 {humanData.pets.map((pet) => (
-                  <option key={pet.id}
-                    value={pet.id}>
+                  <option key={pet.id} value={pet.id}>
                     {pet.name}
                   </option>
                 ))}
@@ -220,14 +207,12 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
                 sx={{ py: 2 }}
               >
                 {postType.map((option) => (
-                  <option key={option.value}
-                    value={option.value}>
+                  <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
                 ))}
               </TextField>
-              <Button variant="contained"
-                component="label">
+              <Button variant="contained" component="label">
                 Upload Photo
                 <input
                   name="image"

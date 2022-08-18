@@ -9,7 +9,7 @@ import { NavItem } from "./nav-item";
 const items = [
   {
     href: "/",
-    title: "My Claims",
+    title: "My post status",
   },
   {
     href: "/posts",
@@ -58,8 +58,7 @@ export const DashboardSidebar = (props) => {
       >
         <div>
           <Box sx={{ p: 3 }}>
-            <NextLink href="/"
-passHref>
+            <NextLink href="/" passHref>
               <a>
                 <Logo
                   sx={{
@@ -70,27 +69,10 @@ passHref>
               </a>
             </NextLink>
           </Box>
-          <Box sx={{ px: 2 }}>
-            <Box
-              sx={{
-                alignItems: "center",
-                backgroundColor: "rgba(255, 255, 255, 0.04)",
-                cursor: "pointer",
-                display: "flex",
-                justifyContent: "space-between",
-                px: 3,
-                py: "11px",
-              }}
-            >
-              Filter by:
-            </Box>
-          </Box>
         </div>
         <Box sx={{ flexGrow: 1 }}>
           {items.map((item) => (
-            <NavItem key={item.title}
-href={item.href}
-title={item.title} />
+            <NavItem key={item.title} href={item.href} title={item.title} />
           ))}
         </Box>
       </Box>

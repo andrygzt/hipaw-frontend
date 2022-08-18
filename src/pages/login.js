@@ -36,7 +36,7 @@ const Login = () => {
           if (response.data?.id) {
             setCurrentHuman(response.data);
             user.human_id = response.data.id;
-            router.push("/");
+            router.push("/posts");
           } else {
             router.push("/register");
           }
@@ -64,28 +64,21 @@ const Login = () => {
         }}
       >
         <Container maxWidth="sm">
-          <NextLink href="/"
-passHref>
-            <Button component="a"
-startIcon={<ArrowBackIcon fontSize="small" />}>
+          <NextLink href="/" passHref>
+            <Button component="a" startIcon={<ArrowBackIcon fontSize="small" />}>
               Dashboard
             </Button>
           </NextLink>
           <form onSubmit={formik.handleSubmit}>
             <Box sx={{ my: 3 }}>
-              <Typography color="textPrimary"
-variant="h4">
+              <Typography color="textPrimary" variant="h4">
                 Sign in
               </Typography>
-              <Typography color="textSecondary"
-gutterBottom
-variant="body2">
+              <Typography color="textSecondary" gutterBottom variant="body2">
                 Get authorization with your Google Account
               </Typography>
             </Box>
-            <Grid item
-xs={12}
-md={6}>
+            <Grid item xs={12} md={6}>
               <Button
                 fullWidth
                 color="error"
