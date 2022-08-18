@@ -15,6 +15,10 @@ import { UserAuth } from "src/context/AuthContext";
 
 const petType = [
   {
+    value: "Select",
+    label: "",
+  },
+  {
     value: "Dog",
     label: "Dog",
   },
@@ -37,6 +41,10 @@ const petType = [
   {
     value: "Reptile",
     label: "Reptile",
+  },
+  {
+    value: "Spider",
+    label: "Spider",
   },
 ];
 
@@ -113,7 +121,7 @@ export const AccountPetProfileDetails = (props) => {
                 required
                 select
                 SelectProps={{ native: true }}
-                value={values.petType}
+                value={values.type}
                 variant="outlined"
               >
                 {petType.map((option) => (
