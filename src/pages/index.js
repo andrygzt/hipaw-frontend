@@ -6,9 +6,11 @@ import { DashboardLayout } from "../components/dashboard-layout";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { backend_url } from "src/env";
+import { UserAuth } from "src/context/AuthContext";
 
 const Dashboard = () => {
   const [posts, setPosts] = useState([]);
+  const {human} = UserAuth();
 
   useEffect(() => {
     getPostsFromAPI();
@@ -16,16 +18,16 @@ const Dashboard = () => {
 
   const getPostsFromAPI = () => {
     axios
-      .get(`${backend_url}/posts`)
+      .get(`${backend_url}/humans/${human.id}/posts`)
       .then((response) => {
-        setPosts(response.data);
+        setPosts(response.data.posts);
       })
       .catch((error) => {
         console.log("ERROR");
       });
   };
 
-  const afterDelete = () => {
+  const afterChange = () => {
     getPostsFromAPI();
   };
 
@@ -43,13 +45,13 @@ const Dashboard = () => {
       >
         <Container maxWidth={true}>
           <Grid container
-spacing={1}>
+            spacing={1}>
             <Grid item
-lg={20}
-md={16}
-xl={22}
-xs={12}>
-              <LatestPosts posts={posts} />
+              lg={20}
+              md={16}
+              xl={22}
+              xs={12}>
+              <LatestPosts human={human} posts={posts} afterAccepted={afterChange}/>
             </Grid>
           </Grid>
         </Container>
@@ -63,14 +65,14 @@ xs={12}>
       >
         <Container maxWidth={true}>
           <Grid container
-spacing={1}>
+            spacing={1}>
             <Grid item
-lg={20}
-md={16}
-xl={22}
-xs={12}>
+              lg={20}
+              md={16}
+              xl={22}
+              xs={12}>
               <UserPosts posts={posts}
-afterDelete={afterDelete} />
+                afterDelete={afterChange} />
             </Grid>
           </Grid>
         </Container>

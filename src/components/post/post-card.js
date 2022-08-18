@@ -2,12 +2,15 @@ import PropTypes from "prop-types";
 import { Avatar, Box, Button, Card, CardContent, Divider, Grid, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { backend_url } from "src/env";
+import { SeverityPill } from "../severity-pill";
 
-export const PostCard = ({ post, ...rest }) => {
+export const PostCard = ({ post, human, ...rest }) => {
   const router = useRouter();
   if (!post) {
     return null;
   }
+  const isMine = post.human_id === human.id;
+  const isClaimed = post.status === "Claimed";
   return (
     <Card
       sx={{
@@ -49,6 +52,20 @@ export const PostCard = ({ post, ...rest }) => {
           {post.description}
         </Typography>
         <Typography align="center"
+        color="textPrimary"
+        gutterBottom
+        variant="h5">
+          <SeverityPill
+            color={
+              (post?.status === "Active" && "info") ||
+              (post?.status === "Claimed" && "success") ||
+              "info"
+            }
+          >
+            {post?.status}
+          </SeverityPill>
+      </Typography>
+        <Typography align="center"
           color="textPrimary"
           gutterBottom
           variant="body1">
@@ -86,7 +103,7 @@ export const PostCard = ({ post, ...rest }) => {
               <Button onClick={() => router.push(`/post/${post.id}`)}>See more</Button>
             </Typography>
           </Grid>
-          <Grid
+          { !isMine && !isClaimed? (<Grid
             item
             sx={{
               alignItems: "center",
@@ -99,7 +116,7 @@ export const PostCard = ({ post, ...rest }) => {
               variant="body2">
               <Button onClick={() => router.push(`/post/${post.id}`)}>Claim</Button>
             </Typography>
-          </Grid>
+          </Grid>) : null}
         </Grid>
       </Box>
     </Card>

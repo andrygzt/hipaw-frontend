@@ -6,9 +6,11 @@ import { PostCard } from "../components/post/post-card";
 import { DashboardLayout } from "../components/dashboard-layout";
 import axios from "axios";
 import { backend_url } from "src/env";
+import { UserAuth } from "src/context/AuthContext";
 
 const Products = () => {
   const [posts, setPosts] = useState([]);
+  const {human} = UserAuth();
 
   useEffect(() => {
     getPostsFromAPI();
@@ -48,7 +50,7 @@ const Products = () => {
                   lg={4}
                   md={6}
                   xs={12}>
-                  <PostCard post={post} />
+                  <PostCard post={post} human={human} />
                 </Grid>
               ))}
             </Grid>

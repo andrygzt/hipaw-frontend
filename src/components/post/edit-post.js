@@ -12,7 +12,7 @@ import {
 import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { postStatus, postType } from "./post-menu";
+import { postType } from "./post-menu";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { backend_url } from "src/env";
@@ -25,7 +25,7 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
     title: "",
     description: "",
     category: "",
-    status: "Open",
+    status: "Active",
     pet_id: "",
     is_claim: false,
     human_id: humanData.human_id,
@@ -153,26 +153,6 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
               />
               <TextField
                 fullWidth
-                helperText="Post status"
-                label="Status"
-                name="status"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                required
-                select
-                SelectProps={{ native: true }}
-                value={formik.values.status}
-                variant="outlined"
-                sx={{ py: 2 }}
-              >
-                {postStatus.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
-                  </option>
-                ))}
-              </TextField>
-              <TextField
-                fullWidth
                 helperText="Pet"
                 label="Pet"
                 name="pet_id"
@@ -212,7 +192,27 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
                   </option>
                 ))}
               </TextField>
-
+              <Button variant="contained" component="label">
+                Upload Photo
+                <input
+                  name="image"
+                  accept="image/jpg"
+                  id="contained-button-file"
+                  type="file"
+                  hidden
+                  onChange={(e) => {
+                    const fileReader = new FileReader();
+                    fileReader.onload = () => {
+                      if (fileReader.readyState === 2) {
+                        console.log(fileReader);
+                        setimageInfo({ bytes: e.target.files[0], base64: fileReader.result });
+                      }
+                    };
+                    fileReader.readAsDataURL(e.target.files[0]);
+                    console.log(e.target.files[0]);
+                  }}
+                />
+              </Button>
               <Box
                 sx={{
                   display: "flex",

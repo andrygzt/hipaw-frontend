@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import { Avatar, Box, Button, Card, CardContent, Divider, Grid, Typography } from "@mui/material";
 import { backend_url } from "src/env";
 import { useRouter } from "next/router";
+import { SeverityPill } from "../severity-pill";
 
-export const PostCard = ({ post, ...rest }) => {
+export const PostCard = ({ post, isMine, isClaimed, ...rest }) => {
   const router = useRouter();
   const avatarSrc = post.id ? `${backend_url}/posts/images/${post.id}.jpg` : null;
-  console.log('post in one-post', post);
   return (
   <Card
     sx={{
@@ -57,7 +57,15 @@ export const PostCard = ({ post, ...rest }) => {
         color="textPrimary"
         gutterBottom
         variant="h5">
-        {post?.status}
+          <SeverityPill
+            color={
+              (post?.status === "Active" && "info") ||
+              (post?.status === "Claimed" && "success") ||
+              'info'
+            }
+          >
+            {post?.status}
+          </SeverityPill>
       </Typography>
       <Typography align="center"
         color="textPrimary"
@@ -84,7 +92,8 @@ export const PostCard = ({ post, ...rest }) => {
       </Typography>
     </CardContent>
     <Box sx={{ flexGrow: 1 }} />
-    <Divider />
+    { isMine && !isClaimed? (<>
+      <Divider />
       <Box sx={{ p: 2 }}>
         <Grid container
           spacing={1}
@@ -105,6 +114,7 @@ export const PostCard = ({ post, ...rest }) => {
           </Grid>
         </Grid>
       </Box>
+    </>) : null}
   </Card>
 )
 };

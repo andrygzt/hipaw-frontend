@@ -74,6 +74,9 @@ const PostClaim = () => {
         console.log("ERROR");
       });
   };
+  console.log('PostClaim post human',post, human);
+  const isMine = post.human_id === human.id;
+  const isClaimed = post.status === 'Claimed';
 
   return (
     <>
@@ -91,11 +94,11 @@ const PostClaim = () => {
           <Box sx={{ pt: 3 }}>
             <Grid container spacing={3}>
               <Grid item key={post.id} lg={12} md={12} xs={12}>
-                <PostCard post={post} />
+                <PostCard post={post} isMine={isMine} isClaimed={isClaimed}/>
               </Grid>
             </Grid>
           </Box>
-          <Box
+          { !isMine && !isClaimed? (<Box
             sx={{
               display: "flex",
               justifyContent: "center",
@@ -105,7 +108,7 @@ const PostClaim = () => {
             <Button variant="contained" onClick={() => setCreatingClaim(true)}>
               Claim
             </Button>
-          </Box>
+          </Box>) : null}
         </Container>
       </Box>
       {creatingClaim ? (

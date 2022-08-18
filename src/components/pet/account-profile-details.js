@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import { backend_url } from "src/env";
 import { UserAuth } from "src/context/AuthContext";
+import { useRouter } from "next/router";
 
 const petType = [
   {
@@ -52,6 +53,7 @@ const petType = [
 export const AccountPetProfileDetails = (props) => {
   const { human } = UserAuth();
   const [imageInfo, setimageInfo] = useState({});
+  const router = useRouter();
   let avatarSrc = imageInfo.base64;
   const [values, setValues] = useState({});
   const submitNewPet = () => {
