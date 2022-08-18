@@ -10,7 +10,7 @@ import { UserAuth } from "../context/AuthContext";
 import { backend_url } from "src/env";
 
 const Register = () => {
-  const { user } = UserAuth();
+  const { user, setCurrentHuman } = UserAuth();
   const router = useRouter();
   const formik = useFormik({
     initialValues: {
@@ -28,6 +28,7 @@ const Register = () => {
         .post(`${backend_url}/humans`, formik.values)
         .then((response) => {
           console.log("response", response);
+          setCurrentHuman(response.data);
           router.push("/");
         })
         .catch((error) => {
@@ -53,17 +54,14 @@ const Register = () => {
         }}
       >
         <Container maxWidth="sm">
-          <NextLink href="/"
-passHref>
-            <Button component="a"
-startIcon={<ArrowBackIcon fontSize="small" />}>
+          <NextLink href="/" passHref>
+            <Button component="a" startIcon={<ArrowBackIcon fontSize="small" />}>
               Back to posts
             </Button>
           </NextLink>
           <form onSubmit={formik.handleSubmit}>
             <Box sx={{ my: 3 }}>
-              <Typography color="textPrimary"
-variant="h4">
+              <Typography color="textPrimary" variant="h4">
                 Create a new account
               </Typography>
             </Box>
