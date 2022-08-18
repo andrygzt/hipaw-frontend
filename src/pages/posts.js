@@ -41,13 +41,13 @@ const Products = () => {
           <PostListToolbar />
           <Box sx={{ pt: 3 }}>
             <Grid container
-spacing={3}>
+              spacing={3}>
               {posts.map((post) => (
                 <Grid item
-key={post.id}
-lg={4}
-md={6}
-xs={12}>
+                  key={post.id}
+                  lg={4}
+                  md={6}
+                  xs={12}>
                   <PostCard post={post} />
                 </Grid>
               ))}
@@ -61,8 +61,8 @@ xs={12}>
             }}
           >
             <Pagination color="primary"
-count={3}
-size="small" />
+              count={3}
+              size="small" />
           </Box>
         </Container>
       </Box>

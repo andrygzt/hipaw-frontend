@@ -2,7 +2,11 @@ import PropTypes from "prop-types";
 
 import { Avatar, Box, Button, Card, CardContent, Divider, Grid, Typography } from "@mui/material";
 import { backend_url } from "src/env";
-export const PostCard = ({ post, ...rest }) => (
+export const PostCard = ({ post, ...rest }) => {
+  if (!post){
+    return null;
+  }
+  return (
   <Card
     sx={{
       display: "flex",
@@ -31,32 +35,32 @@ export const PostCard = ({ post, ...rest }) => (
         />
       </Box>
       <Typography align="center"
-color="textPrimary"
-gutterBottom
-variant="h5">
+        color="textPrimary"
+        gutterBottom
+        variant="h5">
         {post.title}
       </Typography>
       <Typography align="center"
-color="textPrimary"
-gutterBottom
-variant="body1">
+        color="textPrimary"
+        gutterBottom
+        variant="body1">
         {post.description}
       </Typography>
       <Typography align="center"
-color="textPrimary"
-gutterBottom
-variant="body1">
+        color="textPrimary"
+        gutterBottom
+        variant="body1">
         {post.pet.type}
       </Typography>
       <Typography align="center"
-color="textPrimary"
-gutterBottom
-variant="body1">
+        color="textPrimary"
+        gutterBottom
+        variant="body1">
         {post.pet.name}
       </Typography>
       <Typography align="center"
-color="textPrimary"
-variant="body1">
+        color="textPrimary"
+        variant="body1">
         {post.pet.detail}
       </Typography>
     </CardContent>
@@ -64,8 +68,8 @@ variant="body1">
     <Divider />
     <Box sx={{ p: 2 }}>
       <Grid container
-spacing={1}
-sx={{ justifyContent: "space-between" }}>
+        spacing={1}
+        sx={{ justifyContent: "space-between" }}>
         <Grid
           item
           sx={{
@@ -74,9 +78,9 @@ sx={{ justifyContent: "space-between" }}>
           }}
         >
           <Typography color="textSecondary"
-display="inline"
-sx={{ pl: 1 }}
-variant="body2">
+            display="inline"
+            sx={{ pl: 1 }}
+            variant="body2">
             <Button href="/post-claim">See more</Button>
           </Typography>
         </Grid>
@@ -88,16 +92,16 @@ variant="body2">
           }}
         >
           <Typography color="textSecondary"
-display="inline"
-sx={{ pl: 1 }}
-variant="body2">
+            display="inline"
+            sx={{ pl: 1 }}
+            variant="body2">
             <Button href="/post-claim">Claim</Button>
           </Typography>
         </Grid>
       </Grid>
     </Box>
   </Card>
-);
+)};
 
 PostCard.propTypes = {
   post: PropTypes.object.isRequired,
