@@ -212,27 +212,7 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
                   </option>
                 ))}
               </TextField>
-              <Button variant="contained" component="label">
-                Upload Photo
-                <input
-                  name="image"
-                  accept="image/jpg"
-                  id="contained-button-file"
-                  type="file"
-                  hidden
-                  onChange={(e) => {
-                    const fileReader = new FileReader();
-                    fileReader.onload = () => {
-                      if (fileReader.readyState === 2) {
-                        console.log(fileReader);
-                        setimageInfo({ bytes: e.target.files[0], base64: fileReader.result });
-                      }
-                    };
-                    fileReader.readAsDataURL(e.target.files[0]);
-                    console.log(e.target.files[0]);
-                  }}
-                />
-              </Button>
+
               <Box
                 sx={{
                   display: "flex",
@@ -265,7 +245,6 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
           justifyContent: "center",
         }}
       >
-        {/* Try to tenary this Button to "save`" to do not create same from twice */}
         <Button
           color="primary"
           disabled={formik.isSubmitting}

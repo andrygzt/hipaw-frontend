@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   Box,
   Button,
+  Avatar,
   Card,
   CardContent,
   CardHeader,
@@ -50,17 +51,41 @@ const petType = [
 
 export const AccountPetProfileDetails = (props) => {
   const { human } = UserAuth();
+  const [imageInfo, setimageInfo] = useState({});
+  let avatarSrc = imageInfo.base64;
   const [values, setValues] = useState({});
   const submitNewPet = () => {
     console.log("pet values", values);
     axios
       .post(`${backend_url}/humans/${human.id}/pet`, values)
       .then((response) => {
+        uploadImage(response.data.id);
         console.log("response", response);
       })
       .catch((error) => {
         console.log("ERROR", error);
       });
+  };
+
+  const uploadImage = async (pet_id) => {
+    console.log("imageInfo.bytes", imageInfo.bytes);
+    if (imageInfo.bytes) {
+      const formData = new FormData();
+      formData.append("photo", imageInfo.bytes);
+      try {
+        const response = await axios({
+          method: "patch",
+          url: `${backend_url}/pets/${pet_id}/photo`,
+          data: formData,
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+        router.push(`/posts`);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      router.push(`/posts`);
+    }
   };
 
   const handleChange = (event) => {
@@ -144,20 +169,64 @@ export const AccountPetProfileDetails = (props) => {
                 variant="outlined"
               />
             </Grid>
+            <Grid item md={12} xs={12}>
+              <Button variant="contained" component="label">
+                Upload Photo
+                <input
+                  name="image"
+                  accept="image/jpg"
+                  id="contained-button-file"
+                  type="file"
+                  hidden
+                  onChange={(e) => {
+                    const fileReader = new FileReader();
+                    fileReader.onload = () => {
+                      if (fileReader.readyState === 2) {
+                        console.log(fileReader);
+                        setimageInfo({ bytes: e.target.files[0], base64: fileReader.result });
+                      }
+                    };
+                    fileReader.readAsDataURL(e.target.files[0]);
+                    console.log(e.target.files[0]);
+                  }}
+                />
+              </Button>
+            </Grid>
+            <Grid item md={12} xs={12}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  pb: 6,
+                }}
+              >
+                <Avatar
+                  alt="Post"
+                  src={avatarSrc}
+                  variant="square"
+                  sx={{
+                    height: 300,
+                    mb: 2,
+                    width: 300,
+                  }}
+                />
+              </Box>
+            </Grid>
           </Grid>
         </CardContent>
-        <Divider />
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            p: 2,
-          }}
-        >
-          <Button color="primary" variant="contained" onClick={submitNewPet}>
-            Save details
-          </Button>
-        </Box>
+        <Grid item md={12} xs={12}>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              pb: 6,
+            }}
+          >
+            <Button color="primary" variant="contained" onClick={submitNewPet}>
+              Save details
+            </Button>
+          </Box>
+        </Grid>
       </Card>
     </form>
   );
