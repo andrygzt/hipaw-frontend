@@ -38,10 +38,6 @@ const petType = [
     value: "Reptile",
     label: "Reptile",
   },
-  {
-    value: "Spider",
-    label: "Spider",
-  },
 ];
 
 export const AccountPetProfileDetails = (props) => {
