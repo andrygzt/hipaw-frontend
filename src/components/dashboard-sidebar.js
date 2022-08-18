@@ -58,7 +58,8 @@ export const DashboardSidebar = (props) => {
       >
         <div>
           <Box sx={{ p: 3 }}>
-            <NextLink href="/" passHref>
+            <NextLink href="/"
+passHref>
               <a>
                 <Logo
                   sx={{
@@ -87,7 +88,9 @@ export const DashboardSidebar = (props) => {
         </div>
         <Box sx={{ flexGrow: 1 }}>
           {items.map((item) => (
-            <NavItem key={item.title} href={item.href} title={item.title} />
+            <NavItem key={item.title}
+href={item.href}
+title={item.title} />
           ))}
         </Box>
       </Box>

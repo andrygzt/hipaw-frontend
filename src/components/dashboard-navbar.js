@@ -69,17 +69,23 @@ export const DashboardNavbar = (props) => {
           <Box sx={{ flexGrow: 1 }} />
           <Tooltip title="User">
             <IconButton sx={{ ml: 1 }}>
-              <Badge badgeContent={4} color="primary" variant="dot">
+              <Badge badgeContent={4}
+color="primary"
+variant="dot">
                 <UserIcon fontSize="small" />
               </Badge>
             </IconButton>
           </Tooltip>
           {user ? (
             <>
-              <Typography color="textSecondary" display="inline" sx={{ px: 2 }}>
+              <Typography color="textSecondary"
+display="inline"
+sx={{ px: 2 }}>
                 {user?.displayName}
               </Typography>
-              <Button color="primary" variant="contained" onClick={handleSignOut}>
+              <Button color="primary"
+variant="contained"
+onClick={handleSignOut}>
                 LogOut
               </Button>
             </>

@@ -17,15 +17,23 @@ const Account = () => (
       }}
     >
       <Container maxWidth="lg">
-        <Typography sx={{ mb: 3 }} variant="h3">
+        <Typography sx={{ mb: 3 }}
+variant="h3">
           Register a Pet
         </Typography>
-        <Grid container spacing={3}>
-          <Grid item lg={4} md={6} xs={12}>
+        <Grid container
+spacing={3}>
+          <Grid item
+lg={4}
+md={6}
+xs={12}>
             {true ? <AccountProfile /> : null}
             {/*create a function that turns true to false when pet information is not saved*/}
           </Grid>
-          <Grid item lg={8} md={6} xs={12}>
+          <Grid item
+lg={8}
+md={6}
+xs={12}>
             <AccountPetProfileDetails />
           </Grid>
         </Grid>

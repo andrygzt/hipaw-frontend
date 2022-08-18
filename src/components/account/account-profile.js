@@ -36,20 +36,26 @@ export const AccountProfile = (props) => (
             width: 150,
           }}
         />
-        <Typography color="textPrimary" gutterBottom variant="h4">
+        <Typography color="textPrimary"
+gutterBottom
+variant="h4">
           {pet.name}
         </Typography>
-        <Typography color="textSecondary" variant="body2" variant="h6">
+        <Typography color="textSecondary"
+variant="h6">
           {`${pet.type}, ${pet.age}`}
         </Typography>
-        <Typography color="textSecondary" variant="body2" variant="h6">
+        <Typography color="textSecondary"
+variant="h6">
           {pet.detail}
         </Typography>
       </Box>
     </CardContent>
     <Divider />
     <CardActions>
-      <Button color="primary" fullWidth variant="text">
+      <Button color="primary"
+fullWidth
+variant="text">
         Upload pet picture
       </Button>
     </CardActions>

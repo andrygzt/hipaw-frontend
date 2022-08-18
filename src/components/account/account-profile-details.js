@@ -10,9 +10,8 @@ import {
   TextField,
 } from "@mui/material";
 import axios from "axios";
-import { UserAuth } from "../context/AuthContext";
 import { backend_url } from "src/env";
-
+import { UserAuth } from "src/context/AuthContext";
 
 const petType = [
   {
@@ -48,7 +47,6 @@ const petType = [
 export const AccountPetProfileDetails = (props) => {
   const { human } = UserAuth();
   const [values, setValues] = useState({});
-  const human = { id: 1 };
   const submitNewPet = () => {
     console.log("pet values", values);
     axios

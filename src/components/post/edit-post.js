@@ -94,11 +94,15 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
     <form onSubmit={formik.handleSubmit}>
       <Card>
         {/* Try to tenary this subheader and header to do not create same from twice title="Edit a Post"*/}
-        <CardHeader subheader="Tell me more about what you want to share" title={title} />
+        <CardHeader subheader="Tell me more about what you want to share"
+title={title} />
         <Divider />
         <CardContent>
-          <Grid container spacing={2}>
-            <Grid item xs={12} xl={12}>
+          <Grid container
+spacing={2}>
+            <Grid item
+xs={12}
+xl={12}>
               <TextField
                 error={Boolean(formik.touched.title && formik.errors.title)}
                 fullWidth
@@ -138,7 +142,8 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
                 sx={{ py: 2 }}
               >
                 {postStatus.map((option) => (
-                  <option key={option.value} value={option.value}>
+                  <option key={option.value}
+value={option.value}>
                     {option.label}
                   </option>
                 ))}
@@ -159,7 +164,8 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
               >
                 <option value="">Select a pet</option>
                 {humanData.pets.map((pet) => (
-                  <option key={pet.id} value={pet.id}>
+                  <option key={pet.id}
+value={pet.id}>
                     {pet.name}
                   </option>
                 ))}
@@ -179,12 +185,14 @@ export const PostEdit = ({ humanData, post, isClaim, ...rest }) => {
                 sx={{ py: 2 }}
               >
                 {postType.map((option) => (
-                  <option key={option.value} value={option.value}>
+                  <option key={option.value}
+value={option.value}>
                     {option.label}
                   </option>
                 ))}
               </TextField>
-              <Button variant="contained" component="label">
+              <Button variant="contained"
+component="label">
                 Upload Photo
                 <input
                   name="image"

@@ -30,26 +30,42 @@ export const PostCard = ({ post, ...rest }) => (
           }}
         />
       </Box>
-      <Typography align="center" color="textPrimary" gutterBottom variant="h5">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="h5">
         {post.title}
       </Typography>
-      <Typography align="center" color="textPrimary" gutterBottom variant="body1">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="body1">
         {post.description}
       </Typography>
-      <Typography align="center" color="textPrimary" gutterBottom variant="body1">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="body1">
         {post.pet.type}
       </Typography>
-      <Typography align="center" color="textPrimary" gutterBottom variant="body1">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="body1">
         {post.pet.name}
       </Typography>
-      <Typography align="center" color="textPrimary" variant="body1">
+      <Typography align="center"
+color="textPrimary"
+variant="body1">
         {post.pet.detail}
       </Typography>
     </CardContent>
     <Box sx={{ flexGrow: 1 }} />
     <Divider />
     <Box sx={{ p: 2 }}>
-      <Grid container spacing={1} sx={{ justifyContent: "space-between" }}>
+      <Grid container
+spacing={1}
+sx={{ justifyContent: "space-between" }}>
         <Grid
           item
           sx={{
@@ -57,7 +73,10 @@ export const PostCard = ({ post, ...rest }) => (
             display: "flex",
           }}
         >
-          <Typography color="textSecondary" display="inline" sx={{ pl: 1 }} variant="body2">
+          <Typography color="textSecondary"
+display="inline"
+sx={{ pl: 1 }}
+variant="body2">
             <Button href="/post-claim">See more</Button>
           </Typography>
         </Grid>
@@ -68,7 +87,10 @@ export const PostCard = ({ post, ...rest }) => (
             display: "flex",
           }}
         >
-          <Typography color="textSecondary" display="inline" sx={{ pl: 1 }} variant="body2">
+          <Typography color="textSecondary"
+display="inline"
+sx={{ pl: 1 }}
+variant="body2">
             <Button href="/post-claim">Claim</Button>
           </Typography>
         </Grid>

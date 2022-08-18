@@ -18,11 +18,14 @@ export const PostListToolbar = (props) => {
           m: -1,
         }}
       >
-        <Typography sx={{ m: 1 }} variant="h3">
+        <Typography sx={{ m: 1 }}
+variant="h3">
           All Posts
         </Typography>
         <Box sx={{ m: 1 }}>
-          <Button color="primary" variant="contained" onClick={goToCreateNewPost}>
+          <Button color="primary"
+variant="contained"
+onClick={goToCreateNewPost}>
             Create a New Post
           </Button>
         </Box>

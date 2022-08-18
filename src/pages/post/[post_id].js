@@ -101,8 +101,13 @@ const PostClaim = () => {
       >
         <Container maxWidth={false}>
           <Box sx={{ pt: 3 }}>
-            <Grid container spacing={3}>
-              <Grid item key={post.id} lg={12} md={12} xs={12}>
+            <Grid container
+spacing={3}>
+              <Grid item
+key={post.id}
+lg={12}
+md={12}
+xs={12}>
                 <PostCard post={post} />
               </Grid>
             </Grid>
@@ -114,7 +119,8 @@ const PostClaim = () => {
               pt: 3,
             }}
           >
-            <Button variant="contained" onClick={() => setCreatingClaim(true)}>
+            <Button variant="contained"
+onClick={() => setCreatingClaim(true)}>
               Claim
             </Button>
           </Box>
@@ -129,7 +135,9 @@ const PostClaim = () => {
             pb: 4,
           }}
         >
-          <PostEdit humanData={humanData} post={post} isClaim={true}></PostEdit>
+          <PostEdit humanData={humanData}
+post={post}
+isClaim={true}></PostEdit>
         </Box>
       ) : null}
     </>

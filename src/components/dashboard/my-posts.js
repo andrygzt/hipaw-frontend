@@ -44,7 +44,8 @@ export const UserPosts = ({ posts, afterDelete, ...props }) => {
             </TableHead>
             <TableBody>
               {posts.map((post) => (
-                <TableRow hover key={post.id}>
+                <TableRow hover
+key={post.id}>
                   <TableCell>{post.title}</TableCell>
                   <TableCell>
                     <SeverityPill

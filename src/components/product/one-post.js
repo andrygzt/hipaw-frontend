@@ -19,30 +19,55 @@ export const PostCard = ({ post, ...rest }) => (
           pb: 6,
         }}
       >
-        <Avatar alt="Post" src={post.image} variant="square" />
+        <Avatar alt="Post"
+src={post.image}
+variant="square" />
       </Box>
-      <Typography align="center" color="textPrimary" gutterBottom variant="h5">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="h5">
         {post.title}
       </Typography>
-      <Typography align="center" color="textPrimary" gutterBottom variant="body1">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="body1">
         {post.description}
       </Typography>
-      <Typography align="center" color="textPrimary" gutterBottom variant="h6">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="h6">
         {post.category}
       </Typography>
-      <Typography align="center" color="textPrimary" gutterBottom variant="h5">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="h5">
         {post.status}
       </Typography>
-      <Typography align="center" color="textPrimary" gutterBottom variant="body1">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="body1">
         {post.pet.name}
       </Typography>
-      <Typography align="center" color="textPrimary" gutterBottom variant="body1">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="body1">
         {post.pet.type}
       </Typography>
-      <Typography align="center" color="textPrimary" gutterBottom variant="body1">
+      <Typography align="center"
+color="textPrimary"
+gutterBottom
+variant="body1">
         {post.pet.age}
       </Typography>
-      <Typography align="center" color="textPrimary" variant="body1">
+      <Typography align="center"
+color="textPrimary"
+variant="body1">
         {post.pet.detail}
       </Typography>
     </CardContent>

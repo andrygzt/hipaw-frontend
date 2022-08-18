@@ -46,7 +46,8 @@ export const LatestPosts = ({posts, ...props}) => {
           </TableHead>
           <TableBody>
             {querylist.map((obj) => (
-              <TableRow hover key={obj.post.id + "-" + obj.claim.id}>
+              <TableRow hover
+key={obj.post.id + "-" + obj.claim.id}>
                 <TableCell>{obj.post.title}</TableCell>
                 <TableCell>
                   <SeverityPill

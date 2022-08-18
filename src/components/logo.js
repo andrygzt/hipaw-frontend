@@ -6,7 +6,9 @@ export const Logo = styled((props) => {
 
   const color = variant === "light" ? "#C1C4D6" : "#5048E5";
 
-  return <img src="static/images/hipaw_logo.png" width="60" height="60"></img>;
+  return <img src="static/images/hipaw_logo.png"
+width="60"
+height="60"></img>;
 })``;
 
 Logo.defaultProps = {

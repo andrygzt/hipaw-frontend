@@ -18,7 +18,8 @@ export const NavItem = (props) => {
       }}
       {...others}
     >
-      <NextLink href={href} passHref>
+      <NextLink href={href}
+passHref>
         <Button
           component="a"
           startIcon={icon}

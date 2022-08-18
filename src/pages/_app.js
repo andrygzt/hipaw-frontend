@@ -20,7 +20,8 @@ const App = (props) => {
       <CacheProvider value={emotionCache}>
         <Head>
           <title>Hi-PAw</title>
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
+          <meta name="viewport"
+content="initial-scale=1, width=device-width" />
         </Head>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <ThemeProvider theme={theme}>

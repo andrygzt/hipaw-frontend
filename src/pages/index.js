@@ -42,8 +42,13 @@ const Dashboard = () => {
         }}
       >
         <Container maxWidth={true}>
-          <Grid container spacing={1}>
-            <Grid item lg={20} md={16} xl={22} xs={12}>
+          <Grid container
+spacing={1}>
+            <Grid item
+lg={20}
+md={16}
+xl={22}
+xs={12}>
               <LatestPosts posts={posts} />
             </Grid>
           </Grid>
@@ -57,9 +62,15 @@ const Dashboard = () => {
         }}
       >
         <Container maxWidth={true}>
-          <Grid container spacing={1}>
-            <Grid item lg={20} md={16} xl={22} xs={12}>
-              <UserPosts posts={posts} afterDelete={afterDelete} />
+          <Grid container
+spacing={1}>
+            <Grid item
+lg={20}
+md={16}
+xl={22}
+xs={12}>
+              <UserPosts posts={posts}
+afterDelete={afterDelete} />
             </Grid>
           </Grid>
         </Container>
